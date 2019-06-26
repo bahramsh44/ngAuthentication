@@ -1,0 +1,356 @@
+.flexcontainer {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  /* You can set flex-wrap and
+         flex-direction individually */
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* Or do it all in one line
+        with flex flow */
+  flex-flow: row nowrap;
+  /* tweak where items line
+         up on the row
+         valid values are: flex-start,
+         flex-end, space-between,
+         space-around, stretch */
+  align-content: flex-end;
+}
+
+.firstColumn {
+  flex: 1.3 1 0;
+  overflow-y: scroll;
+  height: 1000px;
+  overflow-x: hidden;
+}
+
+.secondColumn {
+  flex: 1 0 0;
+  overflow-y: scroll;
+  height: 1000px;
+  overflow-x: hidden;
+  background-color: white;
+}
+
+.firstColumn::-webkit-scrollbar {
+  display: none;
+}
+
+.secondColumn::-webkit-scrollbar {
+  display: none;
+}
+
+$bg-color: #424242;
+$hl-color: #2196f3;
+$muted-color: mix(white, $bg-color, 70%);
+$trans-time: 300ms;
+$width: 320px;
+
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: $bg-color;
+}
+
+// FORM // ============================== //
+form {
+  width: -100px;
+  margin: 5px auto;
+
+  h1 {
+    font-size: 3em;
+    font-weight: 300;
+    text-align: center;
+    color: $hl-color;
+  }
+  h5 {
+    text-align: center;
+    text-transform: uppercase;
+    color: $muted-color;
+  }
+  hr.sep {
+    background: $hl-color;
+    box-shadow: none;
+    border: none;
+    height: 2px;
+    width: 125%;
+    margin: 0px auto 45px auto;
+  }
+  .emoji {
+    font-size: 1.2em;
+  }
+}
+.banner {
+  height: auto;
+  width: 90%;
+  min-width: 400px;
+  display: block;
+  position: relative;
+  margin: 0px auto;
+  animation: 1s ease 0s 1 normal forwards running furKKK;
+  transition: all 0.5s ease 0s;
+}
+
+.logo {
+  margin: 15px;
+  height: auto;
+  width: calc((225px + 1vw) - 1em);
+  min-width: 30px;
+  animation: 1s ease 0s 1 normal forwards running ERqXR;
+  transition: all 0.5s ease 0s;
+}
+.group {
+  position: relative;
+  margin: 8px 0;
+}
+
+// INPUTS // ============================== //
+textarea {
+  resize: none;
+}
+
+.invalid-feedback {
+  color: red !important;
+}
+
+.loginTitle {
+  display: block;
+  font-family: Montserrat;
+  font-size: calc((30px + 1vw) - 0.5em);
+  color: rgb(4, 17, 22);
+  margin-bottom: 0.75em;
+  line-height: 1.25em;
+  font-weight: 500;
+}
+
+input,
+textarea {
+  background: none;
+  color: black;
+  font-size: 14px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 80%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid $muted-color;
+  &:focus {
+    outline: none;
+  }
+  &:focus ~ label,
+  &:valid ~ label {
+    top: -14px;
+    font-size: 12px;
+    color: $hl-color;
+  }
+  &:focus ~ .bar:before {
+    width: 100%;
+  }
+}
+
+input[type='password'] {
+  letter-spacing: 0.3em;
+}
+
+label {
+  color: $muted-color;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: $trans-time ease all;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100% !important;
+  &:before {
+    content: '';
+    height: 2px;
+    width: 100% !important;
+    bottom: 0px;
+    position: absolute;
+    background: $hl-color;
+    transition: $trans-time ease all;
+    left: 0%;
+    width: 100% !important;
+  }
+}
+
+// BUTTONS // ============================== //
+.btn {
+  background: #fff;
+  color: mix(black, $muted-color, 25%);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  &:hover {
+    color: mix(black, $muted-color, 30%);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+  }
+  &.btn-link {
+    background: $hl-color;
+    color: mix(white, $hl-color, 80%);
+    &:hover {
+      background: darken($hl-color, 5%);
+      color: mix(white, $hl-color, 85%);
+    }
+  }
+  &.btn-submit {
+    background: $hl-color;
+    color: mix(white, $hl-color, 70%);
+    &:hover {
+      background: darken($hl-color, 5%);
+      color: mix(white, $hl-color, 85%);
+    }
+  }
+  &.btn-cancel {
+    background: #eee;
+    &:hover {
+      background: darken(#eee, 5%);
+      color: mix(black, $muted-color, 30%);
+    }
+  }
+}
+
+.btn-box {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.body {
+  position: relative;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+.wrap {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  width: 350px;
+  left: 0;
+  margin: 0 auto;
+}
+
+/* select starting stylings ------------------------------*/
+.select {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  position: relative;
+  width: 350px;
+}
+
+.select-text {
+  position: relative;
+  font-family: inherit;
+  background-color: transparent;
+  width: 350px;
+  padding: 10px 10px 10px 0;
+  font-size: 18px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Remove focus */
+.select-text:focus {
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+/* Use custom arrow */
+.select .select-text {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.select:after {
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  /* Styling the down arrow */
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+}
+
+/* LABEL ======================================= */
+.select-label {
+  color: rgba(0, 0, 0, 0.26);
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  top: 10px;
+  transition: 0.2s ease all;
+}
+
+/* active state */
+.select-text:focus ~ .select-label,
+.select-text:valid ~ .select-label {
+  color: #2f80ed;
+  top: -20px;
+  transition: 0.2s ease all;
+  font-size: 14px;
+}
+
+/* BOTTOM BARS ================================= */
+.select-bar {
+  position: relative;
+  display: block;
+  width: 350px;
+}
+
+.select-bar:before,
+.select-bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #2f80ed;
+  transition: 0.2s ease all;
+}
+
+.select-bar:before {
+  left: 50%;
+}
+
+.select-bar:after {
+  right: 50%;
+}
+
+/* active state */
+.select-text:focus ~ .select-bar:before,
+.select-text:focus ~ .select-bar:after {
+  width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.select-highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}

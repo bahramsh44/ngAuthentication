@@ -1,1 +1,750 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr.css'; /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+@import './app/theme';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Questrial');
+
+@import './app/functions';
+
+@include mat-core();
+
+$daveTheme: (
+  50: var(--primary),
+  100: var(--primary),
+  200: var(--primary),
+  300: var(--primary),
+  400: var(--primary),
+  500: var(--primary),
+  600: var(--primary),
+  700: var(--primary),
+  800: var(--primary),
+  900: var(--primary),
+  A100: var(--primary),
+  A200: var(--primary),
+  A400: var(--primary),
+  A700: var(--primary),
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+$candy-app-primary: mat-palette($daveTheme);
+$candy-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$candy-app-warn: mat-palette($mat-red);
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+@include angular-material-theme($candy-app-theme);
+
+* {
+  font-family: 'Questrial', sans-serif;
+}
+
+body {
+  background-color: #f5f6fa;
+  margin: 0 !important;
+  font-family: 'Questrial', sans-serif !important;
+  overflow: hidden;
+}
+
+.gridnotvisible {
+  overflow: hidden;
+}
+
+#wrapper {
+  margin: 0 auto;
+  //padding: 10px;
+  height: 100vh;
+  min-height: 100%;
+  width: 100vw;
+  background-color: rgb(245, 246, 250);
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  height: inherit;
+}
+
+.leftPane {
+  padding: 20px;
+  height: 100%;
+}
+
+.rightPane {
+  height: 100%;
+  background: white;
+  padding: 20px;
+  position: relative;
+}
+
+table {
+  width: 100%;
+}
+
+.navLogoMainWrap {
+  min-height: auto;
+  flex-basis: 50%;
+}
+
+.dealerWrap {
+  min-height: auto;
+  text-align: center;
+  flex-basis: 29.1667%;
+}
+
+.dealerMain {
+  min-height: auto;
+  text-align: center;
+  flex-basis: 20.8333%;
+}
+
+.mat-form-field {
+  margin: -10px !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 1.6em;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding-bottom: 8px;
+}
+
+.mat-elevation-z8 {
+  box-shadow: none !important;
+}
+
+ul {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+mat-form-field-infix {
+  font-family: 'Questrial', sans-serif !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  height: 2px !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: #d2d2d2 !important;
+}
+
+.mat-form-field-label {
+  font-size: calc(15px + 0.25vw - 0.33em) !important;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+  //max-width: 280px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    margin-top: 20px;
+  }
+
+  .body-content {
+    padding: 0;
+  }
+}
+
+.navWrap {
+  background-color: inherit;
+  width: auto;
+  height: auto;
+  width: 100vw;
+  position: relative;
+  z-index: 1;
+  //margin-bottom: 30px;
+}
+
+.navSecOne {
+  width: 100%;
+  height: 56px;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navLogoMain {
+  background-color: inherit;
+  width: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 3vw;
+  position: relative;
+  background: none;
+  margin: auto;
+  background: white;
+  height: auto;
+  width: auto;
+}
+
+.navLogo {
+  width: 200px;
+  min-width: 30px;
+  height: auto;
+}
+
+input[type='search'] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.glyphicon-search:before {
+  content: '\e003';
+}
+
+.dealerMain {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12.5px;
+  color: #041116;
+  display: inline-block;
+  padding: 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+.dealerMain > ul {
+  display: none;
+}
+
+.dealerMain:hover {
+  cursor: pointer;
+  background-color: rgb(245, 246, 250);
+}
+
+.dealerMain:hover ul {
+  display: block;
+  margin-top: 15px;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  left: -40px;
+  position: absolute;
+}
+
+.dealerMain:hover ul li {
+  display: block;
+  background-color: rgb(241, 242, 246);
+}
+
+.dealerMain {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12.5px;
+  color: #041116;
+  display: inline-block;
+  padding: 15px;
+  position: relative;
+}
+
+.dealerMain > ul {
+  display: none;
+}
+
+.navSecTwo {
+  width: 100%;
+  height: 44px;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.navElemsWrap {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 70%;
+  -ms-flex-preferred-size: 70%;
+  flex-basis: 70%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  list-style-type: none;
+  height: 100%;
+  // margin-top: 9px;
+}
+
+.navSecTwo:after {
+  bottom: -5px;
+  box-shadow: inset 0px 4px 8px -3px rgba(17, 17, 17, 0.06);
+  content: '';
+  height: 5px;
+  left: 0px;
+  opacity: 1;
+  pointer-events: none;
+  position: absolute;
+  right: 0px;
+  width: 100%;
+  z-index: 2050;
+}
+
+.navElemCont {
+  text-align: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 100%;
+}
+
+.navElem {
+  font-size: 12.5px;
+  text-align: center;
+  color: #041116;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+  height: 100%;
+  display: block;
+  line-height: 44px;
+  width: 50%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.navElem:hover {
+  color: var(--primary);
+}
+
+.flexBig {
+  flex: 1.33 !important;
+}
+
+.rescent {
+  font-size: 12.5px;
+  text-align: center;
+  color: #041116;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+  height: 100%;
+  display: block;
+  line-height: 44px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.active {
+  border-bottom: 3px solid var(--primary);
+}
+
+.headingWrap {
+  background-color: inherit;
+  width: auto;
+  border-bottom: 3px solid #041116;
+  width: auto;
+  background-color: inherit;
+  //width: 50%;
+}
+
+.headingWrap:after {
+  content: '';
+  position: relative;
+  border-bottom: 3px solid var(--primary);
+  width: 20%;
+  text-align: center;
+  display: block;
+  top: 3px;
+}
+
+.title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  height: auto;
+  min-height: inherit;
+  height: vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  width: 100%;
+  margin: 0 auto;
+  background-color: inherit;
+  height: auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: inherit;
+}
+
+.headingTxt {
+  display: block;
+  font-size: 5px;
+  font-family: Questrial;
+  font-size: calc(30px + 0.75vw - 0.75em);
+  color: #041116;
+  font-family: Questrial;
+}
+
+.button {
+  background-color: rgb(4, 17, 22);
+  border: 2px solid rgb(4, 17, 22);
+  color: white;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: calc(12px + 0.33vw - 0.33em);
+  width: auto;
+  min-width: 75px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  margin-top: 10px;
+  margin-right: 5px;
+  height: 35px;
+  display: inline-block;
+  border-radius: 30px;
+  font-family: Questrial;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.button:hover {
+  border: 2px solid rgb(4, 17, 22);
+  color: rgb(4, 17, 22);
+  background-color: white;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+th.mat-header-cell:first-of-type {
+  padding-left: 24px !important;
+  text-align: center !important;
+}
+
+th.mat-header-cell {
+  padding: 10px !important;
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
+  text-align: center !important;
+}
+
+tbody {
+  text-align: center !important;
+}
+
+tr.mat-footer-row,
+tr.mat-row {
+  height: 70px !important;
+}
+
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type,
+th.mat-header-cell:last-of-type {
+  padding-right: 0px !important;
+}
+
+.mat-header-cell {
+  color: black !important;
+  text-align: center !important;
+  font-size: calc((16px + 0.5vw) - 0.66em) !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  padding: 2em !important;
+}
+
+// Button Colors/Classes
+
+.primary {
+  background-color: var(--primary) !important;
+  border: 2px solid var(--primary) !important;
+}
+
+.primary:hover {
+  border: 2px solid var(--primary) !important;
+  color: var(--primary) !important;
+  background-color: white !important;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+.secondary {
+  background-color: var(--secondary) !important;
+  border: 2px solid var(--secondary) !important;
+}
+
+.secondary:hover {
+  border: 2px solid var(--secondary) !important;
+  color: var(--secondary) !important;
+  background-color: white !important;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+.tertiary {
+  background-color: var(--tertiary) !important;
+  border: 2px solid var(--tertiary) !important;
+}
+
+.tertiary:hover {
+  border: 2px solid var(--tertiary) !important;
+  color: var(--tertiary) !important;
+  background-color: white !important;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+.warning {
+  background-color: var(--warning) !important;
+  border: 2px solid var(--warning) !important;
+}
+
+.warning:hover {
+  border: 2px solid var(--warning) !important;
+  color: var(--warning) !important;
+  background-color: white !important;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+.danger {
+  background-color: var(--danger) !important;
+  border: 2px solid var(--danger) !important;
+}
+
+.danger:hover {
+  border: 2px solid var(--danger) !important;
+  color: var(--danger) !important;
+  background-color: white !important;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+.chekefWrap {
+  text-align: center;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.tableWrapper {
+  background-color: white;
+  height: auto;
+  min-height: 100px;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-family: Montserrat !important;
+  margin: 0px;
+  padding: 0px;
+}
+
+.tRow {
+  background-color: white;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding: 0.75em;
+}
+
+.tHead {
+  text-align: center;
+  font-size: calc((16px + 0.5vw) - 0.66em);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2em;
+  font-family: Montserrat !important;
+}
+
+.tCell {
+  text-align: center;
+  font-size: calc((16px + 0.33vw) - 0.5em);
+  padding: 2.5em;
+  font-family: Montserrat !important;
+}
+
+.loadWrapper {
+  height: 100%;
+  width: 100%;
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  font-family: 'Questrial';
+  color: white;
+  font-size: 20px;
+}
+
+.loader {
+  height: 20px;
+  width: 250px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.loader--dot {
+  animation-name: loader;
+  animation-timing-function: ease-in-out;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  background-color: black;
+  position: absolute;
+}
+.loader--dot:first-child {
+  background-color: #0099da;
+  animation-delay: 0.5s;
+}
+.loader--dot:nth-child(2) {
+  background-color: #e33a3a;
+  animation-delay: 0.4s;
+}
+.loader--dot:nth-child(3) {
+  background-color: #013243;
+  animation-delay: 0.3s;
+}
+.loader--dot:nth-child(4) {
+  background-color: #3ae374;
+  animation-delay: 0.2s;
+}
+.loader--dot:nth-child(5) {
+  background-color: #ffee00;
+  animation-delay: 0.1s;
+}
+.loader--dot:nth-child(6) {
+  background-color: #041116;
+  animation-delay: 0s;
+}
+
+.loaderText {
+  position: absolute;
+  top: 200%;
+  left: 0;
+  right: 0;
+  width: 4rem;
+  margin: auto;
+  color: black;
+}
+
+@keyframes loader {
+  15% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(230px);
+  }
+  65% {
+    transform: translateX(230px);
+  }
+  95% {
+    transform: translateX(0);
+  }
+}
+
+.tempWrapper {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

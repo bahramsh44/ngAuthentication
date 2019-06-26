@@ -1,20 +1,53 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<form #f="ngForm" name="form" id="form" novalidate>
+  <div class="flexcontainer">
+    <div class="firstColumn">
+      <div>
+        <div>
+          <div class="logo">
+            <img class="navLogo" src="{{ logo }}" />
+          </div>
+          <div style="float:right;margin-top: -60px">
+            <select name="language" class="select-text">
+              <option value="en-CA">
+                {{ 'english' | translate }}
+              </option>
+              <option value="fr-CA">
+                {{ 'french' | translate }}
+              </option>
+            </select>
+            <span class="select-highlight"></span>
+            <span class="select-bar"></span>
+          </div>
+        </div>
+        <div style="margin-top:200px"><img class="banner" src="{{ banner }}" /></div>
+      </div>
+    </div>
+    <div class="secondColumn">
+      <div style="margin-top:37%;margin-left:15px">
+        <span class="loginTitle">{{ 'login' | translate }}</span>
+        <div class="group">
+          <input type="text" name="UserName" [(ngModel)]="username" #userName="ngModel" required />
+          <span class="highlight"></span>
+          <label>{{ 'usernameoremail' | translate }}</label>
+          <div *ngIf="userName.invalid && (f.submitted || userName.dirty)" class="invalid-feedback">
+            <div *ngIf="userName.errors.required">Please enter a UserName</div>
+          </div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="group">
+          <input type="password" name="UserName" [(ngModel)]="password" #passsWord="ngModel" name="Password" required />
+          <span class="highlight"></span>
+          <label>{{ 'password' | translate }}</label>
+          <div *ngIf="passsWord.invalid && (f.submitted || passsWord.dirty)" class="invalid-feedback">
+            <div *ngIf="passsWord.errors.required">Please enter a password</div>
+          </div>
+        </div>
+        <button class="button black">{{ 'login' | translate }}</button>
+        <br />
+        <div style="margin-top:20px">
+          <a>{{ 'forgotpassword' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
