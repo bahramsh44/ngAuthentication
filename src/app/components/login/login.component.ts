@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AppService} from 'symtech-shared-library';
 import {AuthServiceService} from 'src/app/service/auth.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,19 @@ import {AuthServiceService} from 'src/app/service/auth.service';
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
+  newpassword: string;
+  confirmpassword: string;
   siteId: string;
   fusername: string;
   logo: string;
   banner: string;
   landingUrl: string;
   forgotpasswordSection = false;
+  resetpasswordSection = false;
 
-  constructor(private appService: AppService, private authService: AuthServiceService) {}
+  verificationCode: string;
+
+  constructor(private appService: AppService, private authService: AuthServiceService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.appService.lanCookieChangeService.apply('');
@@ -31,6 +37,13 @@ export class LoginComponent implements OnInit {
     });
 
     this.appService.siteSettingService.getSiteSetting(window.location.hostname);
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      const verificationcode = params.verificationcode;
+      if (verificationcode) {
+        this.resetpasswordSection = true;
+      }
+    });
   }
 
   selectChange(value) {
@@ -48,6 +61,12 @@ export class LoginComponent implements OnInit {
     if (form.valid) {
       this.appService.authenticateService.passwordReset(this.fusername, this.siteId);
       this.forgotpasswordSection = false;
+    }
+  }
+
+  submitResetPassword(form) {
+    if (form.valid) {
+      this.appService.authenticateService.changePassword(this.verificationCode, this.newpassword);
     }
   }
 }

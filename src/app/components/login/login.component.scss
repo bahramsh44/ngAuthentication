@@ -343,6 +343,13 @@ label {
   margin-left: 15px;
 }
 
+.passwordDesciption {
+  display: block;
+  font-size: calc((16px + 0.25vw) - 0.33em);
+  color: rgb(4, 17, 22);
+  font-family: Questrial;
+}
+
 .forgotPassword {
   display: block;
   font-family: Montserrat;

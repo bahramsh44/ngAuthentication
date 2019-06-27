@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="secondColumn">
-      <div class="sectionSpace" *ngIf="!forgotpasswordSection">
+      <div class="sectionSpace" *ngIf="!forgotpasswordSection && !resetpasswordSection">
         <span class="loginTitle">{{ 'login' | translate }}</span>
         <div class="group">
           <input type="text" name="UserName" [(ngModel)]="username" #userName="ngModel" required />
@@ -61,6 +61,33 @@
           </div>
           <button class="button black" type="submit">{{ 'submit' | translate }}</button>
           <button class="button black" type="button" (click)="forgotpasswordSection = false">{{ 'cancel' | translate }}</button>
+        </form>
+      </div>
+      <div class="sectionSpace" *ngIf="resetpasswordSection">
+        <form #f2="ngForm" name="form2" (ngSubmit)="submitResetPassword(f2)" id="form" novalidate>
+          <span class="forgotPassword">{{ 'resetpassword' | translate }}</span>
+          <span class="passwordDesciption">{{ 'passwordcomplexity' | translate }}</span>
+          <div class="group">
+            <input type="password" name="newPassword" [(ngModel)]="newpassword" #newPassword="ngModel" required />
+            <span class="highlight"></span>
+            <label>{{ 'newpassword' | translate }}</label>
+            <div *ngIf="newPassword.invalid && (f2.submitted || newPassword.dirty)" class="invalid-feedback">
+              <div *ngIf="newPassword.errors.required">Please enter a password</div>
+            </div>
+          </div>
+          <div class="group">
+            <input type="password" name="confirmPassword" [(ngModel)]="confirmpassword" #confirmPassword="ngModel" required />
+            <span class="highlight"></span>
+            <label>{{ 'confirmpassword' | translate }}</label>
+            <div *ngIf="confirmPassword.invalid && (f2.submitted || confirmPassword.dirty)" class="invalid-feedback">
+              <div *ngIf="confirmPassword.errors.required">Please enter a confirm password</div>
+            </div>
+          </div>
+          <button class="button black" type="button" (click)="resetpasswordSection = false">{{ 'cancel' | translate }}</button>
+          <button class="button black" type="submit">{{ 'submit' | translate }}</button>
+          <div class="invalid-feedback" style="margin-top:10px" *ngIf="newpassword != confirmpassword">
+            {{ 'passwordsdontmatch' | translate }}
+          </div>
         </form>
       </div>
     </div>
