@@ -1,27 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {AppService} from 'symtech-shared-library';
 import {AuthServiceService} from 'src/app/service/auth.service';
 import {ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   username: string;
   password: string;
   newpassword: string;
   confirmpassword: string;
-  siteId: string;
   fusername: string;
-  logo: string;
-  banner: string;
   landingUrl: string;
   forgotpasswordSection = false;
   resetpasswordSection = false;
-
   verificationCode: string;
+  subscription1: Subscription;
 
   constructor(private appService: AppService, private authService: AuthServiceService, private activatedRoute: ActivatedRoute) {}
 
@@ -29,18 +27,11 @@ export class LoginComponent implements OnInit {
     this.appService.lanCookieChangeService.apply('');
     this.appService.translationService.language = this.appService.lanCookieChangeService.CurrentLanguage.substr(0, 2);
 
-    this.appService.siteSettingService.getSiteSettingStream().subscribe(x => {
-      this.logo = x.logo;
-      this.banner = x.vehicle;
-      this.landingUrl = x.landingurl;
-      this.siteId = x.siteID;
-    });
-
     this.appService.siteSettingService.getSiteSetting(window.location.hostname);
 
-    this.activatedRoute.queryParams.subscribe(params => {
-      const verificationcode = params.verificationcode;
-      if (verificationcode) {
+    this.subscription1 = this.activatedRoute.queryParams.subscribe(params => {
+      this.verificationCode = params.verificationcode;
+      if (this.verificationCode) {
         this.resetpasswordSection = true;
       }
     });
@@ -59,7 +50,7 @@ export class LoginComponent implements OnInit {
 
   submitForgotPassword(form) {
     if (form.valid) {
-      this.appService.authenticateService.passwordReset(this.fusername, this.siteId);
+      this.appService.authenticateService.passwordReset(this.fusername, this.authService.siteId);
       this.forgotpasswordSection = false;
     }
   }
@@ -67,6 +58,12 @@ export class LoginComponent implements OnInit {
   submitResetPassword(form) {
     if (form.valid) {
       this.appService.authenticateService.changePassword(this.verificationCode, this.newpassword);
+      this.forgotpasswordSection = false;
+      this.resetpasswordSection = false;
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription1.unsubscribe();
   }
 }

@@ -4,7 +4,7 @@
       <div>
         <div>
           <div class="logo">
-            <img class="navLogo" src="{{ logo }}" />
+            <img class="navLogo" src="{{ authService.logo }}" />
           </div>
           <div style="float:right;margin-top: -60px">
             <select name="language" class="select-text" (change)="selectChange($event.target.value)">
@@ -19,7 +19,7 @@
             <span class="select-bar"></span>
           </div>
         </div>
-        <div style="margin-top:200px"><img class="banner" src="{{ banner }}" /></div>
+        <div style="margin-top:200px"><img class="banner" src="{{ authService.banner }}" /></div>
       </div>
     </div>
     <div class="secondColumn">
