@@ -14,14 +14,16 @@ export class AuthServiceService {
   auth$: Observable<any>;
   constructor(private appService: AppService, private router: Router) {
     this.auth$ = this.appService.authenticateService.tokenStream$;
+  }
 
+  setSiteSetting(lan: string) {
     this.appService.siteSettingService.getSiteSettingStream().subscribe(x => {
       document.documentElement.style.setProperty('--primary', x.primary);
       document.documentElement.style.setProperty('--secondary', x.secondary);
       document.documentElement.style.setProperty('--tertiary', x.tertiary);
       document.documentElement.style.setProperty('--warning', x.warning);
       document.documentElement.style.setProperty('--danger', x.danger);
-      this.logo = x.logo;
+      this.logo = lan !== 'fr-CA' ? x.logo : String(x.logo).replace('en-CA', 'fr-CA');
       this.banner = x.vehicle;
       this.landingUrl = x.landingurl;
       this.siteId = x.siteID;

@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.selectedValue = this.authService.initializeLanguage();
+    this.authService.setSiteSetting(this.selectedValue);
     this.appService.siteSettingService.getSiteSetting(window.location.hostname);
     this.subscription1 = this.activatedRoute.queryParams.subscribe(params => {
       this.verificationCode = params.verificationcode;
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   selectChange(value) {
     this.appService.translationService.language = value.substr(0, 2);
     this.appService.lanCookieChangeService.apply(value);
+    this.authService.setSiteSetting(value);
   }
 
   submit(form) {
