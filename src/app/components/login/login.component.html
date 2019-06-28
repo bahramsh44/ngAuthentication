@@ -7,7 +7,7 @@
             <img class="navLogo" src="{{ authService.logo }}" />
           </div>
           <div style="float:right;margin-top: -60px">
-            <select name="language" class="select-text" (change)="selectChange($event.target.value)">
+            <select name="language" class="select-text" (change)="selectChange($event.target.value)" [(ngModel)]="selectedValue">
               <option value="en-CA">
                 {{ 'english' | translate }}
               </option>
@@ -42,7 +42,7 @@
             <div *ngIf="passsWord.errors.required">Please enter a password</div>
           </div>
         </div>
-        <button class="button black" type="submit">{{ 'login' | translate }}</button>
+        <button class="button primary" type="submit">{{ 'login' | translate }}</button>
         <br />
         <div style="margin-top:20px">
           <a (click)="forgotpasswordSection = true">{{ 'forgotpassword' | translate }}</a>
@@ -59,8 +59,8 @@
               <div *ngIf="userName1.errors.required">Please enter a username or email</div>
             </div>
           </div>
-          <button class="button black" type="submit">{{ 'submit' | translate }}</button>
           <button class="button black" type="button" (click)="forgotpasswordSection = false">{{ 'cancel' | translate }}</button>
+          <button class="button primary" type="submit">{{ 'submit' | translate }}</button>
         </form>
       </div>
       <div class="sectionSpace" *ngIf="resetpasswordSection">
@@ -84,8 +84,8 @@
             </div>
           </div>
           <button class="button black" type="button" (click)="resetpasswordSection = false">{{ 'cancel' | translate }}</button>
-          <button class="button black" type="submit">{{ 'submit' | translate }}</button>
-          <div class="invalid-feedback" style="margin-top:10px" *ngIf="newpassword != confirmpassword">
+          <button class="button primary" type="submit">{{ 'submit' | translate }}</button>
+          <div class="invalid-feedback" style="margin-top:10px" *ngIf="newpassword != confirmpassword && newpassword && confirmpassword">
             {{ 'passwordsdontmatch' | translate }}
           </div>
         </form>

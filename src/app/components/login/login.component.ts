@@ -15,20 +15,17 @@ export class LoginComponent implements OnInit, OnDestroy {
   newpassword: string;
   confirmpassword: string;
   fusername: string;
-  landingUrl: string;
   forgotpasswordSection = false;
   resetpasswordSection = false;
   verificationCode: string;
+  selectedValue: string;
   subscription1: Subscription;
 
   constructor(private appService: AppService, private authService: AuthServiceService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.appService.lanCookieChangeService.apply('');
-    this.appService.translationService.language = this.appService.lanCookieChangeService.CurrentLanguage.substr(0, 2);
-
+    this.selectedValue = this.authService.initializeLanguage();
     this.appService.siteSettingService.getSiteSetting(window.location.hostname);
-
     this.subscription1 = this.activatedRoute.queryParams.subscribe(params => {
       this.verificationCode = params.verificationcode;
       if (this.verificationCode) {
@@ -44,7 +41,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   submit(form) {
     if (form.valid) {
-      this.authService.authenticate(this.username, this.password, this.landingUrl);
+      this.authService.authenticate(this.username, this.password);
     }
   }
 
