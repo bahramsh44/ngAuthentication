@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  selectChange(value) {
+  selectChange(value: string) {
     this.appService.translationService.language = value.substr(0, 2);
-    this.appService.lanCookieChangeService.apply(value);
+    this.appService.lanCookieChangeService.apply(value.trim());
     this.authService.setSiteSetting(value);
   }
 
